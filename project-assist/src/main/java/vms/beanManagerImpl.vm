@@ -1,0 +1,16 @@
+##create bean daoImpl,this is a class
+package $!{bean.beanTypeUrl};
+
+import $!{bean.beanDaoUrl}.$!{bean.name}Dao;
+import $!{bean.beanUrl};
+
+/**
+ * @author $!{annotation.authorName}
+ * @date $!{annotation.date}
+ *
+ * @version $!{annotation.version}
+ */
+@Service
+public class $!{bean.name}$!{bean.typeName} implements $!{bean.name}Manager {
+
+}

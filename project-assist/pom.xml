@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.east</groupId>
+  <artifactId>project-assist</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>project-assist</name>
+  <description>工程创建辅助</description>
+  
+  <properties>
+  	<codemodel.version>2.6</codemodel.version>
+  	<fastjson.version>1.2.9</fastjson.version>
+  	<commons-lang3.version>3.6</commons-lang3.version>
+  	<junit.version>4.12</junit.version>
+  	<slf4j.version>1.7.9</slf4j.version>
+  	<log4j.version>1.2.8</log4j.version>
+  </properties>
+  
+  <dependencies>
+	<dependency>
+		<groupId>com.sun.codemodel</groupId>
+		<artifactId>codemodel-project</artifactId>
+		<version>${codemodel.version}</version>
+		<type>pom</type>
+	</dependency>
+	<dependency>
+  		<groupId>com.alibaba</groupId>
+  		<artifactId>fastjson</artifactId>
+  		<version>${fastjson.version}</version>
+	</dependency>
+	<dependency>
+  		<groupId>org.apache.commons</groupId>
+  		<artifactId>commons-lang3</artifactId>
+  		<version>${commons-lang3.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	
+	<dependency>
+      <groupId>org.mybatis.generator</groupId>
+      <artifactId>mybatis-generator-core</artifactId>
+      <version>1.3.5</version>
+      <scope>provided</scope>
+    </dependency>
+	
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+  <groupId>velocity</groupId>
+  <artifactId>velocity-dep</artifactId>
+  <version>1.5-beta2</version>
+</dependency>
+  </dependencies>
+  
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>2.3.2</version>
+			<configuration>
+				<source>1.7</source>
+				<target>1.7</target>
+				<encoding>UTF-8</encoding>
+				<compilerArguments>
+					<verbose />
+					<bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
+				</compilerArguments>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+</project>

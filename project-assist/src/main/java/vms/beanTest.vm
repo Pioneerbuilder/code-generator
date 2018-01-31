@@ -1,0 +1,45 @@
+##create bean serviceImpl,this is a class
+package $!{bean.beanTypeUrl};
+
+import java.util.List;
+
+import $!{bean.beanUrl};
+
+/**
+ * @author $!{annotation.authorName}
+ * @date $!{annotation.date}
+ *
+ * @version $!{annotation.version}
+ */
+@Service
+public class $!{bean.name}$!{bean.typeName} implements $!{bean.name}Service {
+
+    @AutoWired
+    private $!{bean.name}Dao adminDao;
+
+    @Override
+    public $!{bean.name} getById(Long id) {
+        return adminDao.getById(id);
+    }
+
+    @Override
+    public $!{bean.name} get$!{bean.name}($!{bean.name} $!{bean.lowerName}) {
+        return adminDao.get$!{bean.name}($!{bean.lowerName});
+    }
+
+    @Override
+    public List<$!{bean.name}> list$!{bean.name}($!{bean.name} $!{bean.lowerName}) {
+        return adminDao.list$!{bean.name}($!{bean.lowerName});
+    }
+
+    @Override
+    public List<$!{bean.name}> listForJob(BaseJobQuery jobQuery) {
+        return adminDao.listForJob(jobQuery);
+    }
+
+    @Override
+    public Integer count$!{bean.name}($!{bean.name} $!{bean.lowerName}) {
+        return adminDao.count$!{bean.name}($!{bean.lowerName});
+    }
+	
+}

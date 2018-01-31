@@ -1,0 +1,40 @@
+##create bean dao,this is a interface
+package $!{bean.beanTypeUrl};
+
+import java.util.List;
+
+import $!{bean.beanUrl};
+import com.chunbo.rwms.order.model.base.BaseJobQuery;
+
+/**
+ * @author $!{annotation.authorName}
+ * @date $!{annotation.date}
+ *
+ * @version $!{annotation.version}
+ */
+public interface $!{bean.name}$!{bean.typeName} {
+
+    $!{bean.name} getById(Long id);
+
+    $!{bean.name} get$!{bean.name}($!{bean.name} $!{bean.lowerName});
+
+    List<$!{bean.name}> list$!{bean.name}($!{bean.name} $!{bean.lowerName});
+    
+    List<$!{bean.name}> listForJob(BaseJobQuery jobQuery);
+    
+    List<$!{bean.name}> page$!{bean.name}($!{bean.name}DTO dto);
+    
+    Integer count$!{bean.name}($!{bean.name}DTO dto);
+
+    Integer save($!{bean.name} $!{bean.lowerName});
+    
+    Integer saveSelective($!{bean.name} $!{bean.lowerName});
+
+    Integer saveBatch(List<$!{bean.name}> $!{bean.lowerName}List);
+
+    Integer update($!{bean.name} $!{bean.lowerName});
+    
+    Integer updateSelective($!{bean.name} $!{bean.lowerName});
+
+    Integer updateBatch(List<$!{bean.name}> $!{bean.lowerName}List);
+}

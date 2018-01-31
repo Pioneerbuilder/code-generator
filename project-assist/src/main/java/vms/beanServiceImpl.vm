@@ -1,0 +1,50 @@
+##create bean serviceImpl,this is a class
+package $!{bean.beanTypeUrl};
+
+import java.util.List;
+
+import $!{bean.beanUrl};
+
+/**
+ * @author $!{annotation.authorName}
+ * @date $!{annotation.date}
+ *
+ * @version $!{annotation.version}
+ */
+@Service
+public class $!{bean.name}$!{bean.typeName} implements $!{bean.name}Service {
+
+    @Autowired
+    private $!{bean.name}Dao $!{bean.lowerName}Dao;
+
+    @Override
+    public $!{bean.name} getById(Long id) {
+        return $!{bean.lowerName}Dao.getById(id);
+    }
+
+    @Override
+    public $!{bean.name} get$!{bean.name}($!{bean.name} $!{bean.lowerName}) {
+        return $!{bean.lowerName}Dao.get$!{bean.name}($!{bean.lowerName});
+    }
+
+    @Override
+    public List<$!{bean.name}> list$!{bean.name}($!{bean.name} $!{bean.lowerName}) {
+        return $!{bean.lowerName}Dao.list$!{bean.name}($!{bean.lowerName});
+    }
+
+    @Override
+    public List<$!{bean.name}> listForJob(BaseJobQuery jobQuery) {
+        return $!{bean.lowerName}Dao.listForJob(jobQuery);
+    }
+
+    @Override
+    public Integer count$!{bean.name}($!{bean.name}DTO dto) {
+        return $!{bean.lowerName}Dao.count$!{bean.name}(dto);
+    }
+    
+    @Override
+    public List<$!{bean.name}> page$!{bean.name}($!{bean.name}DTO dto) {
+        return $!{bean.lowerName}Dao.page$!{bean.name}(dto);
+    }
+	
+}

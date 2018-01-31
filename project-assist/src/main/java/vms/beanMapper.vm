@@ -1,0 +1,81 @@
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from $!{bean.tableName}
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="get$!{bean.name}" resultMap="BaseResultMap" parameterType="com.chunbo.rwms.inv.model.$!{bean.name}" >
+    select 
+    <include refid="Base_Column_List" />
+    from $!{bean.tableName}
+    <where>
+      <include refid="Base_Where_List"/>
+    </where>
+  </select>
+  <select id="list$!{bean.name}" resultMap="BaseResultMap" parameterType="com.chunbo.rwms.inv.model.$!{bean.name}" >
+    select 
+    <include refid="Base_Column_List" />
+    from $!{bean.tableName}
+    <where>
+      <include refid="Base_Where_List"/>
+    </where>
+  </select>
+  <select id="page$!{bean.name}" resultMap="BaseResultMap" parameterType="com.chunbo.rwms.inv.dto.$!{bean.name}DTO" >
+    select 
+    <include refid="Base_Column_List" />
+    from $!{bean.tableName}
+    <where>
+      <include refid="Base_Where_List"/>
+    </where>
+    limit #\{start},#\{limit}
+  </select>
+  <select id="count$!{bean.name}" resultType="java.lang.Integer" parameterType="com.chunbo.rwms.inv.dto.$!{bean.name}DTO" >
+    select 
+      count(*)
+    from $!{bean.tableName}
+    <where>
+      <include refid="Base_Where_List"/>
+    </where>
+  </select>
+  
+  <select id="listForJob" parameterType="com.chunbo.rwms.inv.datasync.BaseJobQuery" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from $!{bean.tableName}
+    <where>
+    	return_status != 1
+    	and need_sync = 1
+    	<if test="shardingItemList != null">
+    		and mod(order_id, #\{totalShardingCount}) in
+    		<foreach collection="shardingItemList" item="item" index="index" separator="," open="(" close=")">
+    			#\{item}
+    		</foreach>
+    	</if>
+    	<if test="jobType != null and jobType == 0">
+    		and version &lt; #\{version}
+    	</if>
+    	<if test="jobType != null and jobType == 1">
+    		and version &gt;= #\{version}
+    	</if>
+    </where>
+    order by create_date desc
+  </select>
+  
+  <insert id="saveBatch" parameterType="java.util.List" >
+    <foreach collection="list" item="item" index="index" separator=",">
+    </foreach>
+  </insert>
+  
+  <update id="updateBatch" parameterType="java.util.List">
+  	update $!{bean.tableName}
+  	<set>
+  	  return_status = 1,
+      error_code = '',
+      last_send_date = now(),
+      version = 1
+  	</set>
+  	where id in 
+    <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+      #{item.id}
+    </foreach>
+  </update>

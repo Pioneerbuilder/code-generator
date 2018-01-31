@@ -1,0 +1,23 @@
+##create bean dao,this is a interface
+package $!{bean.beanTypeUrl};
+
+import java.util.List;
+
+import $!{bean.beanUrl};
+
+/**
+ * @author $!{annotation.authorName}
+ * @date $!{annotation.date}
+ *
+ * @version $!{annotation.version}
+ */
+public interface $!{bean.name}$!{bean.typeName} {
+
+    Integer save$!{bean.name}($!{bean.name} $!{bean.lowerName});
+
+    Integer saveBatch(List<$!{bean.name}> $!{bean.lowerName}List);
+
+    Integer update$!{bean.name}($!{bean.name} $!{bean.lowerName});
+
+    Integer updateBatch(List<$!{bean.name}> $!{bean.lowerName}List);
+}

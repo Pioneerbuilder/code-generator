@@ -1,0 +1,15 @@
+/target/
+/.settings/
+.classpath
+.project
+*.component
+*.prefs
+org.eclipse.*
+/bin/
+.idea
+*.iml
+.settings
+target
+*.tern-project
+.jsdtscope
+velocity.log

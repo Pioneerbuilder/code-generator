@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+<!-- <classPathEntry location="F:\mysql-connector-java-commercial-5.1.31-bin.jar" /> -->
+<classPathEntry location="E:\2017.3.6\developmentKits\maven\repos\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
+	<!-- 	<classPathEntry location="D:\sorftinstall\maven\mysql-connector-java-commercial-5.1.31-bin.jar" />		 -->
+  <context id="mysql56" >
+   <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 这里的type里写的是你的实现类的类全路径 -->
+  <commentGenerator type="org.east.project.assist.MyCommentGenerator">
+      <property name="suppressAllComments" value="false" />
+      <property name="suppressDate" value="false" />
+    </commentGenerator>
+  
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://wmswdb.uat.chunbo.com:3309/WmsinvDB?generateSimpleParameterMetadata=true" userId="wms" 
+            password="Z@NRJOd7" >
+             <property name="useInformationSchema" value="true"></property>
+    </jdbcConnection>
+            
+<!-- 类型转换 -->  
+        <javaTypeResolver>  
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver> 
+         
+<!-- generate Model -->
+        <javaModelGenerator targetPackage="com.chunbo.rwms.order.model"
+            targetProject="chunbo-rwms-order-model">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+         
+<!-- generate xml -->
+        <sqlMapGenerator targetPackage="com.chunbo.rwms.order.dao"
+            targetProject="chunbo-rwms-order-dao">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+         
+<!-- generate Mapper  -->
+        <javaClientGenerator type="XMLMAPPER"
+            targetPackage="com.chunbo.rwms.order.dao" targetProject="chunbo-rwms-order-dao">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+	<!-- 
+		transfer_status_upload_wdm_que TransferStatusUploadWdmQue
+		transfer_upload_wdm_que  TransferUploadWdmQue
+	
+	 -->
+        <table schema="wmsinvdb" tableName="sku_main" domainObjectName="SkuMain"
+        enableCountByExample="false" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="false">
+<!--             <columnOverride column="DOUBLE" jdbcType="DECIMAL" />  -->
+        </table>
+
+  </context>
+</generatorConfiguration>
