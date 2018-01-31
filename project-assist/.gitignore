@@ -12,4 +12,4 @@ org.eclipse.*
 target
 *.tern-project
 .jsdtscope
-velocity.log
+velocity.log*
